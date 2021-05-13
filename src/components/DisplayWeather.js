@@ -3,6 +3,7 @@ import React from "react";
 function DisplayWeather({ weather }) {
   return (
     <React.Fragment>
+    test
       {weather.map(weathers =>
           <div
             key={weathers.id}

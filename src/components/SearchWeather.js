@@ -39,6 +39,7 @@ function SearchWeather({ weather, setWeather }) {
 
   return (
     <React.Fragment>
+    test
       <form
         className="text-center container mx-auto px-6 py-3"
         onSubmit={(e) => e.preventDefault()}

@@ -8,6 +8,7 @@ const App = () => {
 
   return (
     <React.Fragment>
+    Test
       <Head />
       <SearchWeather weather={weather} setWeather={setWeather} />
       <DisplayWeather weather={weather} />
