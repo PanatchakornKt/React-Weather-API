@@ -14,7 +14,7 @@ function SearchWeather({ weather, setWeather }) {
       const filter = await {
         api: "http://api.openweathermap.org/data/2.5/weather",
         q: query,
-        appid: "1f580224d79d56e4a831cc3da1f4c9e9",
+        appid: "myApi",
         units: "metric",
       };
       const url = `${filter.api}?q=${filter.q}&appid=${filter.appid}&units=${filter.units}`;
