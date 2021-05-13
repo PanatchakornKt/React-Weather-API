@@ -1,12 +1,15 @@
 import React, {useState} from "react";
 import axios from "axios";
 import Weather from "./Weather";
+import Swal from 'sweetalert2'
 
 function Form() {
   
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState([]);
   const [weatherlist, setWeatherlist] = useState([]);
+
+  const Swal = require('sweetalert2')
 
   const onSearch = async (query) => {
     try {
@@ -23,6 +26,12 @@ function Form() {
       console.log(result.data);
     } catch (error) {
       console.log(error.response);
+       Swal.fire({
+        title: 'Error',
+        text: 'City not found!',
+        icon: 'error',
+        confirmButtonText: 'ok'
+       })
     }
     setWeatherlist(query);
     setQuery("");
