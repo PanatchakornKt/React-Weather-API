@@ -1,50 +1,46 @@
-import React, {useState} from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState } from "react";
 import axios from "axios";
-import Weather from "./Weather";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
-function Form() {
-  
+function SearchWeather({ weather, setWeather }) {
   const [query, setQuery] = useState("");
-  const [weather, setWeather] = useState([]);
   const [weatherlist, setWeatherlist] = useState([]);
 
-  const Swal = require('sweetalert2')
+  const Swal = require("sweetalert2");
 
-  const onSearch = async (query) => {
+  const callWeatherapi = async query => {
     try {
       const filter = await {
         api: "http://api.openweathermap.org/data/2.5/weather",
         q: query,
-        appid: "e5ee4efcb86ae45499524c78a853959e",
+        appid: "1f580224d79d56e4a831cc3da1f4c9e9",
         units: "metric",
       };
       const url = `${filter.api}?q=${filter.q}&appid=${filter.appid}&units=${filter.units}`;
       const result = await axios.get(url);
       const newDatas = [...weather, result.data];
       setWeather(newDatas);
-      console.log(result.data);
     } catch (error) {
-      console.log(error.response);
-       Swal.fire({
-        title: 'Error',
-        text: 'City not found!',
-        icon: 'error',
-        confirmButtonText: 'ok'
-       })
+      Swal.fire({
+        title: "Error",
+        text: "City not found!",
+        icon: "error",
+        confirmButtonText: "ok",
+      });
+      setWeatherlist(query);
+      setQuery("");
     }
-    setWeatherlist(query);
-    setQuery("");
   };
 
-  const onClear = () => {
+  const onDeleteWeather = () => {
     setWeather([]);
   };
 
   return (
-    <div weatherlist={weatherlist}>
+    <React.Fragment>
       <form
-        className="container mx-auto px-6 py-3"
+        className="text-center container mx-auto px-6 py-3"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
@@ -56,25 +52,22 @@ function Form() {
         />
         <button
           type="submit"
-          onClick={() => onSearch(query)}
+          onClick={() => callWeatherapi(query)}
           className="ml-2 puppercase font-semibold tracking-wide bg-gray-100 text-gray-700 px-2 py-1 rounded-lg mt-2 focus:outline-none hover:bg-gray-200 text-xs"
         >
           Search
         </button>
         <button
           className="ml-2 puppercase font-semibold tracking-wide bg-red-100 text-red-700 px-2 py-1 rounded-lg mt-2 focus:outline-none hover:bg-red-200 text-xs"
-          onClick={onClear}
+          onClick={onDeleteWeather}
         >
           Clear
         </button>
-        <button className="ml-2 puppercase font-semibold tracking-wide text-gray-700 px-2 py-1 rounded-lg mt-2 focus:outline-none  text-xs">
+        <label className="ml-2 puppercase font-semibold tracking-wide text-gray-700 px-2 py-1 mt-2 focus:outline-none  text-xs">
           Country list : {weather.length}
-        </button>
+        </label>
       </form>
-      <Weather 
-      weather = {weather}
-      />
-    </div>
+    </React.Fragment>
   );
 }
-export default Form;
+export default SearchWeather;
