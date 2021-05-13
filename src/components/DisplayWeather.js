@@ -3,7 +3,10 @@ import React from "react";
 function DisplayWeather({ weather }) {
   return (
     <React.Fragment>
+<<<<<<< HEAD
     test
+=======
+>>>>>>> 07b22de9c0f7cc49becf8d03b07fc8c8a16e2ac7
       {weather.map(weathers =>
           <div
             key={weathers.id}

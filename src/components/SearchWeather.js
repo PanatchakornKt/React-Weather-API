@@ -39,7 +39,10 @@ function SearchWeather({ weather, setWeather }) {
 
   return (
     <React.Fragment>
+<<<<<<< HEAD:src/components/SearchWeather.js
     test
+=======
+>>>>>>> 07b22de9c0f7cc49becf8d03b07fc8c8a16e2ac7:src/components/Form.js
       <form
         className="text-center container mx-auto px-6 py-3"
         onSubmit={(e) => e.preventDefault()}
