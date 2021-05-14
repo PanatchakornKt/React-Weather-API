@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-function SearchWeather({ weather, setWeather }) {
+const SearchWeather = ({ weather, setWeather }) => {
   const [query, setQuery] = useState("");
   const [weatherlist, setWeatherlist] = useState([]);
 
@@ -14,7 +14,7 @@ function SearchWeather({ weather, setWeather }) {
       const filter = await {
         api: "http://api.openweathermap.org/data/2.5/weather",
         q: query,
-        appid: "My_Api",
+        appid: "1f580224d79d56e4a831cc3da1f4c9e9",
         units: "metric",
       };
       const url = `${filter.api}?q=${filter.q}&appid=${filter.appid}&units=${filter.units}`;
